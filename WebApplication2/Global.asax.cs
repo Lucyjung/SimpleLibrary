@@ -17,9 +17,12 @@ namespace WebApplication2
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             MongoContext mongo = new MongoContext();
-            mongo.Query();
-            mongo.Create();
-            
+            UserModel user = new UserModel();
+            user.Create();
+            UserSchema userInfo = user.Query("0999");
+            userInfo.name = "Prawit";
+            user.Update(userInfo);
+            user.Delete("0999");
         }
     }
 }
